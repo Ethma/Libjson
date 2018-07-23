@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/06/29 14:39:58 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/10 13:52:43 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,10 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 	f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;
 	ret->ptr = (void*)object;
 	return (ret);
+}
+
+int		main(void)
+{
+	open ()
+	new_object()
 }

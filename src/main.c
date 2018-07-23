@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_double.c                                     :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:48:39 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/23 16:20:40 by mabessir         ###   ########.fr       */
+/*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
+/*   Updated: 2018/07/23 15:50:46 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libc.h"
+#include "../includes/json.h"
 
-int		ft_is_double(t_json_file *file)
+int     main(int ac, char **av)
 {
-	unsigned long pos;
+	int fd;
 
-	pos = file->pos;
-	while (pos < file->len)
-	{
-		if (ft_isdigit(file->str[pos]))
-			pos++;
-		else if (file->str[pos] == 'e')
-			return (1);
-		else if (file->str[pos] == 'E')
-			return (1);
-		else
-			return (0);
-	}
-	return (0);
+	if (ac != 2)
+		return (0);
+	if (!(fd = open(av[1], O_RDONLY)))
+		return (0);
+	json_init(av[1]);
 }

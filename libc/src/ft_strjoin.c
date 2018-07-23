@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_double.c                                     :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:48:39 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/23 16:20:40 by mabessir         ###   ########.fr       */
+/*   Created: 2017/12/11 14:38:45 by mabessir          #+#    #+#             */
+/*   Updated: 2018/07/23 16:18:09 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libc.h"
 
-int		ft_is_double(t_json_file *file)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	unsigned long pos;
+	char	*str;
+	char	*ret;
 
-	pos = file->pos;
-	while (pos < file->len)
-	{
-		if (ft_isdigit(file->str[pos]))
-			pos++;
-		else if (file->str[pos] == 'e')
-			return (1);
-		else if (file->str[pos] == 'E')
-			return (1);
-		else
-			return (0);
-	}
-	return (0);
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	if (!(str = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+		return (NULL);
+	ret = str;
+	while (*s1)
+		*str++ = *s1++;
+	while (*s2)
+		*str++ = *s2++;
+	*str = '\0';
+	return (ret);
 }

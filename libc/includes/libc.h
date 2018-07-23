@@ -6,13 +6,14 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/06/28 12:31:39 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/23 16:14:44 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBC_H
 # define LIBC_H
-# include "../../includes/json.h"
+
+#include "../../includes/json.h"
 
 int		ft_atoi(const char *str);
 
@@ -33,4 +34,12 @@ double	ft_atof(const char *str);
 void	pass_spaces(t_json_file *file);
 
 void	ft_free(void *ptr);
+
+char	*ft_strdup(const char *src);
+
+char	*ft_strjoin(char const *s1, char const *s2);
+
+size_t	ft_strlen(const char *s);
+
+char	*ft_strnew(size_t size);
 #endif

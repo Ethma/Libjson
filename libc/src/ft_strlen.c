@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_double.c                                     :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:48:39 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/23 16:20:40 by mabessir         ###   ########.fr       */
+/*   Created: 2017/12/11 14:39:15 by mabessir          #+#    #+#             */
+/*   Updated: 2018/07/23 16:19:07 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libc.h"
 
-int		ft_is_double(t_json_file *file)
+size_t	ft_strlen(const char *s)
 {
-	unsigned long pos;
+	size_t	len;
 
-	pos = file->pos;
-	while (pos < file->len)
+	len = 0;
+	while (*s)
 	{
-		if (ft_isdigit(file->str[pos]))
-			pos++;
-		else if (file->str[pos] == 'e')
-			return (1);
-		else if (file->str[pos] == 'E')
-			return (1);
-		else
-			return (0);
+		len++;
+		s++;
 	}
-	return (0);
+	return (len);
 }
