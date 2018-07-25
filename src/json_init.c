@@ -6,11 +6,12 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:58:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/06/28 12:35:31 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 15:27:46 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
+#include "../libc/includes/libc.h"
 
 t_json_value	*json_init(char *str)
 {

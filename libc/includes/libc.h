@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/24 19:09:36 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 18:15:25 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,11 @@ double	ft_atof(const char *str);
 
 void	pass_spaces(t_json_file *file);
 
-void	ft_free(void *ptr);
+void	*ft_free(void *ptr);
 
 char	*ft_strdup(const char *src);
+
+char	*ft_strndup(const char *s1, size_t n);
 
 char	*ft_strjoin(char const *s1, char const *s2);
 

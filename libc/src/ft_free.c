@@ -6,13 +6,13 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 10:38:44 by mabessir          #+#    #+#             */
-/*   Updated: 2018/06/28 12:31:52 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 18:00:10 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libc.h"
 
-void	ft_free(void *ptr)
+void	*ft_free(void *ptr)
 {
 	if (!ptr)
 		free(ptr);

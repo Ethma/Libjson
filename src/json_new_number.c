@@ -6,11 +6,12 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 13:58:59 by mabessir          #+#    #+#             */
-/*   Updated: 2018/06/28 12:39:23 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 15:37:12 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
+#include "../libc/includes/libc.h"
 
 static void				jump_number(t_json_file *file)
 {
@@ -34,7 +35,7 @@ static void				jump_number(t_json_file *file)
 	}
 }
 
-static	t_json_value	*number(t_json_file *file, t_json_value *num)
+static	t_json_value	*ft_number(t_json_file *file, t_json_value *num)
 {
 	num->type = number;
 	if ((num->ptr = malloc(sizeof(double))) == NULL)
@@ -43,10 +44,10 @@ static	t_json_value	*number(t_json_file *file, t_json_value *num)
 	return (num);
 }
 
-static	t_json_value	*integer(t_json_file *file, t_json_value *num)
+static	t_json_value	*ft_integer(t_json_file *file, t_json_value *num)
 {
 	num->type = integer;
-	if (num->ptr = malloc(sizeof(int)) == NULL)
+	if ((num->ptr = malloc(sizeof(int))) == NULL)
 		return (NULL);
 	*(int *)(num->ptr) = ft_atoi(&file->str[file->pos]);
 	return (num);
@@ -61,12 +62,13 @@ t_json_value *parent)
 	(ft_isdigit(file->str[file->pos]) != 1 && file->str[file->pos] != '-' &&
 	file->str[file->pos] != '+'))
 		return (NULL);
-	if (num = (t_json_value *)malloc(sizeof(t_json_value)) == NULL)
+	if ((num = (t_json_value *)malloc(sizeof(t_json_value))) == NULL)
 		return (NULL);
 	if (type == number)
-		number(file, num);
+		ft_number(file, num);
 	if (type == integer)
-		integer(file, num);
+		ft_integer(file, num);
 	num->parent = parent;
+	jump_number(file);
 	return (num);
 }

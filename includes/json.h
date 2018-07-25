@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:45:27 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/24 18:40:40 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 17:46:13 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBJSON_H
 # include <stdlib.h>
 # include <fcntl.h>
-# include "../libc/includes/libc.h"
+//# include "../libc/includes/libc.h"
 # define TRUE 1
 # define FALSE 0
 
@@ -83,11 +83,11 @@ t_json_value *parent);
 t_json_value				*init_number(t_json_file *file,
 t_json_value_type type, t_json_value *parent);
 
-t_json_value				*ft_fill_json_value(t_json_file *parent,
+t_json_value				*ft_fill_json_value(t_json_value *parent,
 t_json_value_type type, void *ptr);
 
 t_json_value				*new_string(t_json_file *file,
 t_json_value *parent);
 
-t_json_value				*make_new_string(t_json_file *file);
+t_json_string				*make_new_string(t_json_file *file);
 #endif

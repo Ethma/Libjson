@@ -6,11 +6,12 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/10 13:52:43 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 18:16:11 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
+#include "../libc/includes/libc.h"
 
 unsigned long	get_size(t_json_file *file, unsigned long pos)
 {
@@ -23,7 +24,7 @@ unsigned long	get_size(t_json_file *file, unsigned long pos)
 		pos++;
 	cou = 1;
 	count2 = 0;
-	if (file->str[pos] == c[0])
+	if (file->str[pos] == ']')
 		return (0);
 	while (pos < file->len && c[0])
 	{
@@ -49,7 +50,7 @@ t_json_pair		*new_pair(t_json_file *file, t_json_value *parent)
 		file->pos++;
 	if ((pair = (t_json_pair *)malloc(sizeof(t_json_pair))) == NULL)
 		return (pair);
-	if (pair->key =make_new_string(file) == NULL)
+	if ((pair->key = make_new_string(file)) == NULL)
 		return (ft_free(pair));
 	while (ft_isspace(file->str[file->pos]))
 		file->pos++;
@@ -65,35 +66,29 @@ t_json_pair		*new_pair(t_json_file *file, t_json_value *parent)
 
 t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 {
-	t_json_object	*object;
+	t_json_object	*obj;
 	t_json_value	*ret;
 
 	if (f->pos >= f->len || f->str == NULL ||
 	f->str[f->pos] != '{'
 	|| (ret = ft_fill_json_value(parent, object, NULL)) == NULL)
 		return (NULL);
-	if ((object = (t_json_object *)malloc(sizeof(t_json_object))) == NULL
+	if ((obj = (t_json_object *)malloc(sizeof(t_json_object))) == NULL
 	&& ft_free(ret))
-		return (ft_free(object));
-	object->nb = get_size(f, f->pos++);
-	if (object->pair = (t_json_pair **)malloc(sizeof(t_json_pair *)
-	* object->nb) == NULL && ft_free(ret))
-		return (ft_free(object));
+		return (ft_free(obj));
+	obj->nb = get_size(f, f->pos++);
+	if ((obj->pair = (t_json_pair **)malloc(sizeof(t_json_pair *)
+	* obj->nb)) == NULL && ft_free(ret))
+		return (ft_free(obj));
 	f->index = 0;
-	while (f->index < object->nb)
+	while (f->index < obj->nb)
 	{
-		object->pair[f->index++] = new_pair(f, ret);
+		obj->pair[f->index++] = new_pair(f, ret);
 		pass_spaces(f);
 		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 	}
 	pass_spaces(f);
 	f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;
-	ret->ptr = (void*)object;
+	ret->ptr = (void*)obj;
 	return (ret);
-}
-
-int		main(void)
-{
-	open ()
-	new_object()
 }

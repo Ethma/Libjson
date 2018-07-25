@@ -6,11 +6,12 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 14:12:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/06/28 12:35:45 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 15:27:40 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
+#include "../libc/includes/libc.h"
 
 t_json_value_type	get_json_value_type(t_json_file *file)
 {

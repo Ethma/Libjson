@@ -6,13 +6,13 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 15:56:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/06/28 12:34:53 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 14:41:52 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
 
-t_json_value	*ft_fill_json_value(t_json_file *parent,
+t_json_value	*ft_fill_json_value(t_json_value *parent,
 t_json_value_type type, void *ptr)
 {
 	t_json_value *val;

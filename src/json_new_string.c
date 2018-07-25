@@ -6,11 +6,12 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 14:07:51 by mabessir          #+#    #+#             */
-/*   Updated: 2018/06/29 14:26:32 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/25 18:16:16 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
+#include "../libc/includes/libc.h"
 
 t_json_string	*make_new_string(t_json_file *file)
 {
