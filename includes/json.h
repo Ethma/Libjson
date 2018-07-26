@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:45:27 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/25 17:46:13 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/26 20:28:48 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,6 @@ t_json_value				*new_string(t_json_file *file,
 t_json_value *parent);
 
 t_json_string				*make_new_string(t_json_file *file);
+
+t_json_value_type			get_json_value_type(t_json_file *file);
 #endif

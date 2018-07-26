@@ -2,7 +2,8 @@ NAME = libc.a
 CC = gcc
 RM = rm -f
 CFLAGS = -c -Wall -Werror -Wextra
-SRC = ft_strlen.c \
+SRC_PATH = ./src
+FILES = ft_strlen.c \
 	ft_strjoin.c \
 	ft_strdup.c \
 	ft_strdel.c \
@@ -17,6 +18,7 @@ SRC = ft_strlen.c \
 	ft_strndup.c \
 	ft_pass_spaces.c
 
+SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(SRC:%.c=%.o)
 
 all: $(NAME)

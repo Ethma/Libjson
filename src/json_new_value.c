@@ -6,11 +6,12 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 14:12:59 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/10 13:49:48 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/26 20:35:30 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
+#include "../libc/includes/libc.h"
 
 t_json_value	*new_json_value(t_json_file *file, t_json_value *parent)
 {
@@ -20,9 +21,9 @@ t_json_value	*new_json_value(t_json_file *file, t_json_value *parent)
 		file->pos++;
 	type = get_json_value_type(file);
 	if (type == number)
-		return (create_number(file, number, parent));
+		return (init_number(file, number, parent));
 	if (type == integer)
-		return (create_number(file, integer, parent));
+		return (init_number(file, integer, parent));
 	if (type == boolean)
 		return (new_boolean(file, parent));
 	if (type == null && (file->pos += 4))

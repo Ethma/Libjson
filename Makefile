@@ -16,7 +16,7 @@ json_new_value.c \
 main.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
-L        = -L./libc/
+L        = -L./libc
 RM		 = rm -f
 
 all: header $(NAME)
