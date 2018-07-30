@@ -1,8 +1,11 @@
 NAME = libc.a
 CC = gcc
-RM = rm -f
-CFLAGS = -c -Wall -Werror -Wextra
+RM = rm -rf
+INCLUDE = -I./includes
+CFLAGS = -Wall -Werror -Wextra
 SRC_PATH = ./src
+OBJ_NAME = $(FILES:%.c=%.o)
+OBJ_PATH = ./obj
 FILES = ft_strlen.c \
 	ft_strjoin.c \
 	ft_strdup.c \
@@ -16,21 +19,25 @@ FILES = ft_strlen.c \
 	ft_is_double.c \
 	ft_check_null.c \
 	ft_strndup.c \
-	ft_pass_spaces.c
-
+	ft_pass_spaces.c \
+	ft_memalloc.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
-OBJ = $(SRC:%.c=%.o)
+OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(CFLAGS) $(SRC)
+$(NAME): $(OBJ_PATH) $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ)
 	ar rc $(NAME) $(OBJ)
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	$(CC) $(CFLAGS) -c $? $(INCLUDE) -o $@
+$(OBJ_PATH):
+	mkdir -p $(OBJ_PATH)
 
 clean:
-	$(RM) $(OBJ)
+	$(RM) $(OBJ_PATH)
 
 fclean: clean
 	$(RM) $(NAME)
-
+	@echo "[0;1mClear."
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/25 18:15:25 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/07/30 13:27:34 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlen(const char *s);
 
 char	*ft_strnew(size_t size);
+
+void	*ft_memalloc(size_t size);
 #endif
