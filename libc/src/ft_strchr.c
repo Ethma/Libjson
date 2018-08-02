@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 14:39:09 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/02 17:13:29 by mabessir         ###   ########.fr       */
+/*   Created: 2017/08/31 14:45:37 by adleau            #+#    #+#             */
+/*   Updated: 2018/08/02 16:58:32 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libc.h"
 
-char	*ft_strnew(size_t size)
+char	*ft_strchr(const char *s, int c)
 {
-	return ((char *)ft_memalloc(size + 1));
+	while (*s != c)
+	{
+		if (*s == '\0')
+			return (0);
+		s++;
+	}
+	return ((char *)s);
 }

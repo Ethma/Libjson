@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:45:27 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/26 20:28:48 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/02 12:56:09 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBJSON_H
 # include <stdlib.h>
 # include <fcntl.h>
-//# include "../libc/includes/libc.h"
+#include <stdio.h>
 # define TRUE 1
 # define FALSE 0
 

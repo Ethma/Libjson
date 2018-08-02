@@ -1,18 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnew.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/12/11 14:39:09 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/02 17:13:29 by mabessir         ###   ########.fr       */
+/*   Created: 2017/08/31 14:43:36 by adleau            #+#    #+#             */
+/*   Updated: 2018/08/02 17:04:51 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libc.h"
 
-char	*ft_strnew(size_t size)
+void	*ft_memcpy(void *s1, const void *s2, size_t n)
 {
-	return ((char *)ft_memalloc(size + 1));
+	char		*c1;
+	const char	*c2;
+
+	if (n != 0)
+	{
+		c1 = (char *)s1;
+		c2 = (char *)s2;
+		while (n > 0)
+		{
+			*c1 = *c2;
+			c1++;
+			c2++;
+			n--;
+		}
+	}
+	return (s1);
 }

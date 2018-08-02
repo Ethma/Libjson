@@ -6,14 +6,14 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/30 13:27:34 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/02 17:09:15 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBC_H
 # define LIBC_H
-
-#include "../../includes/json.h"
+# include "../../includes/json.h"
+# include "get_next_line.h"
 
 int		ft_atoi(const char *str);
 
@@ -46,4 +46,16 @@ size_t	ft_strlen(const char *s);
 char	*ft_strnew(size_t size);
 
 void	*ft_memalloc(size_t size);
+
+char	*ft_strchr(const char *s, int c);
+
+void	*ft_memmove(void *s1, const void *s2, size_t n);
+
+char	*ft_strsub(char const *s, unsigned int start, size_t len);
+
+void	ft_strdel(char **as);
+
+void	*ft_memcpy(void *s1, const void *s2, size_t n);
+
+char	*ft_strncpy(char *s1, const char *s2, size_t n);
 #endif
