@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/02 17:16:48 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/02 18:10:30 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,19 @@ int     main(int ac, char **av)
 {
 	t_json_file file;
 	int fd;
+	char *str;
 
 	if (ac != 2)
 		;
+	if (av[0] == NULL)
+		;
 	fd = 0;
+	get_next_line(fd, &str);
 	file = (t_json_file){
-		.str = get_next_line(fd, file.(&str));
-		.len = ft_strlen(av[1]),
-		.pos = 3,
+		.str = str,
+		.len = ft_strlen(str),
+		.pos = 0,
 		.index = 0};
-	printf("%c\n", av[1][1]);
 //	printf("%s\n", av[1]);
 /*	if (ac != 2)
 		return (0);
@@ -36,6 +39,5 @@ int     main(int ac, char **av)
 	json_init("av[1]");
 */	printf("bjr2\n");
 	get_json_value_type(&file);
-	printf("bjr2\n");
 	return (0);
 }
