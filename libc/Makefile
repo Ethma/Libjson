@@ -19,16 +19,22 @@ FILES = ft_strlen.c \
 	ft_is_double.c \
 	ft_check_null.c \
 	ft_strndup.c \
+	ft_strdup.c \
+	ft_strnew.c \
 	ft_pass_spaces.c \
-	ft_memalloc.c
+	ft_memalloc.c \
+	get_next_line.c \
+	ft_memmove.c \
+	ft_strchr.c \
+	ft_strsub.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 all: $(NAME)
 
 $(NAME): $(OBJ_PATH) $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ)
 	ar rc $(NAME) $(OBJ)
+	ranlib $(NAME)
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) $(CFLAGS) -c $? $(INCLUDE) -o $@
 $(OBJ_PATH):
