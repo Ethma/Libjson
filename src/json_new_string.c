@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 14:07:51 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/29 17:12:41 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/29 17:48:14 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ t_json_string	*make_new_string(t_json_file *file)
 	if ((str = (t_json_string *)malloc(sizeof(t_json_string))) == NULL)
 		return (NULL);
 	str->len = i - file->pos;
-	printf("file[str] = %s\n", file->str);
+	printf("pos = %lu, i = %lu\n", file->pos, i);
 	if ((str->str = ft_strndup(&file->str[file->pos], str->len)) == NULL)
 	{
 		free(str);
@@ -46,6 +46,6 @@ t_json_value	*new_string(t_json_file *file, t_json_value *parent)
 
 	if ((new_string = make_new_string(file)) == NULL)
 		return (NULL);
-//	printf("string1 = %s\n", new_string->str);
+	printf("string1 = %s\n", new_string->str);
 	return (ft_fill_json_value(parent, string, new_string));
 }
