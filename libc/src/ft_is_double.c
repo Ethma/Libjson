@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/09 10:48:39 by mabessir          #+#    #+#             */
-/*   Updated: 2018/07/23 16:20:40 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/29 13:05:23 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,18 @@ int		ft_is_double(t_json_file *file)
 	unsigned long pos;
 
 	pos = file->pos;
+	if (file->str[pos] == '+' || file->str[pos] == '-')
+	{
+		pos++;
+		if (file->str[pos] == '+' || file->str[pos] == '-')
+			return (2);
+	}
 	while (pos < file->len)
 	{
 		if (ft_isdigit(file->str[pos]))
 			pos++;
+		else if (file->str[pos] == '.')
+			return (1);
 		else if (file->str[pos] == 'e')
 			return (1);
 		else if (file->str[pos] == 'E')

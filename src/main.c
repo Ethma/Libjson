@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/02 18:10:30 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/29 16:34:36 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int     main(int ac, char **av)
 {
-	t_json_file file;
+	t_json_value* file;
 	int fd;
 	char *str;
 
@@ -23,21 +23,19 @@ int     main(int ac, char **av)
 		;
 	if (av[0] == NULL)
 		;
-	fd = 0;
+	if (!(fd = open(av[1], O_RDONLY)))
+		return (0);
 	get_next_line(fd, &str);
-	file = (t_json_file){
+/*	file = (t_json_file){
 		.str = str,
 		.len = ft_strlen(str),
 		.pos = 0,
 		.index = 0};
-//	printf("%s\n", av[1]);
-/*	if (ac != 2)
-		return (0);
-	if (!(fd = open(av[1], O_RDONLY)))
-		return (0);
-	printf("bjr\n");
-	json_init("av[1]");
-*/	printf("bjr2\n");
-	get_json_value_type(&file);
+*/
+	printf("%s\n", str);
+	file = json_init(str);
+	printf("ok?\n");
+	printf("type = %i\n", file->type);
+	printf("string = %s\n", file->ptr);
 	return (0);
 }

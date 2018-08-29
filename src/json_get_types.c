@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 14:12:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/02 18:10:42 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/29 15:53:03 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,21 @@ t_json_value_type	get_json_value_type(t_json_file *file)
 	if (ft_isdigit(file->str[file->pos]) || file->str[file->pos]
 	== '+' || file->str[file->pos] == '-')
 	{
-		if (ft_is_double(file))
+		if (ft_is_double(file) == 1)
 		{
-			printf("number");
+			if (ft_is_double(file) == 2)
+				exit(-1);
 			return (number);
 		}
 		else
-		{
-			printf("integer");
 			return (integer);
-		}
 	}
 	if (file->str[file->pos] == '"')
-	{
-		printf("bsor");
 		return (string);
-	}
 	if (file->str[file->pos] == '[')
-	{
-		printf("array");
 		return (array);
-	}
 	if (file->str[file->pos] == '{')
-	{
-		printf("test\n");
 		return (object);
-	}
 	if (check_null(file))
 		return (null);
 	if (check_bool(file))

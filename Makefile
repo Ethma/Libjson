@@ -1,4 +1,4 @@
-NAME	 = libjson
+NAME	 = libjson.a
 CC		 = gcc
 OBJ_NAME = $(FILES:.c=.o)
 OBJ_PATH = ./obj
@@ -29,6 +29,7 @@ $(NAME): $(OBJ_PATH) $(OBJ)
 	ranlib $(NAME)
 	@echo "./[0;34m$(NAME)[0;38m created."
 	@tput cnorm
+	$(CC) $(CFLAGS) src/main.c libjson.a libc/libc.a
 $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) $(CFLAGS) -c $? $(INCLUDE) -o $@
 clean:
@@ -38,6 +39,7 @@ $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH) 
 fclean: 	clean
 	$(RM) $(NAME)
+	$(RM) a.out
 	make fclean -C libc/
 	@echo "[0;1mClear."
 
