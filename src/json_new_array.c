@@ -1,27 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   json_fill_value.c                                  :+:      :+:    :+:   */
+/*   json_new_array.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 15:56:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/30 12:51:49 by mabessir         ###   ########.fr       */
+/*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
+/*   Updated: 2018/08/30 15:50:38 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/json.h"
-
-t_json_value	*ft_fill_json_value(t_json_value *parent,
-t_json_value_type type, void *ptr)
-{
-	t_json_value *val;
-	
-//	printf ("string2 = %s\n", (char *)ptr->str);
-	if ((val = (t_json_value*)malloc(sizeof(t_json_value))) == NULL)
-		return (NULL);
-	val->type = type;
-	val->parent = parent;
-	val->ptr = ptr;
-	return (val);
-}

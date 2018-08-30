@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 14:07:51 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/29 17:48:14 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/30 13:55:25 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,21 @@ t_json_string	*make_new_string(t_json_file *file)
 	if (file->str == NULL || file->pos >= file->len ||
 	file->str[file->pos] != '"')
 		return (NULL);
-	i = file->pos;
+	i = file->pos + 1;
 	while (i < file->len && file->str[i] != '\0' && file->str[i] != '"')
 		i++;
 	if (i == file->len || file->str[i] == '\0')
 		return (NULL);
 	if ((str = (t_json_string *)malloc(sizeof(t_json_string))) == NULL)
-		return (NULL);
-	str->len = i - file->pos;
+		return (NULL); 
+	str->len = i - file->pos - 1;
 	printf("pos = %lu, i = %lu\n", file->pos, i);
-	if ((str->str = ft_strndup(&file->str[file->pos], str->len)) == NULL)
+	if ((str->str = ft_strndup(&file->str[file->pos] + 1, str->len)) == NULL)
 	{
 		free(str);
 		return (NULL);
 	}
 	file->pos += str->len + 1;
-	printf("str = %s\n", str->str);
 	return (str);
 }
 
