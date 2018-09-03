@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/27 15:56:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/30 12:51:49 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/31 14:06:54 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ t_json_value_type type, void *ptr)
 {
 	t_json_value *val;
 	
-//	printf ("string2 = %s\n", (char *)ptr->str);
 	if ((val = (t_json_value*)malloc(sizeof(t_json_value))) == NULL)
 		return (NULL);
 	val->type = type;

@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/02 13:37:20 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/03 13:33:12 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ unsigned long	get_size(t_json_file *file, unsigned long pos)
 	unsigned long *c;
 
 	c = (unsigned long[4]){(file->str[file->pos++] == '{'), 0, 0, 0};
-	while (pos < file->len && (file->str[pos]))
+	while (pos < file->len && ft_isspace(file->str[pos]))
 		pos++;
 	cou = 1;
 	count2 = 0;
-	if (file->str[pos] == ']')
+	if (file->str[pos] == '}')
 		return (0);
 	while (pos < file->len && c[0])
 	{
@@ -59,7 +59,8 @@ t_json_pair		*new_pair(t_json_file *file, t_json_value *parent)
 	file->pos++;
 	while (ft_isspace(file->str[file->pos]))
 		file->pos++;
-	if ((pair->value = new_json_value(file, parent)) == NULL && ft_free(pair->key))
+	if ((pair->value = new_json_value(file, parent)) == NULL
+		&& ft_free(pair->key))
 		return (ft_free(pair));
 	return (pair);
 }

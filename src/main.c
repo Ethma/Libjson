@@ -6,19 +6,19 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/30 13:44:44 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/03 12:44:01 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libc/includes/libc.h"
 #include "../includes/json.h"
 
-int     main(int ac, char **av)
+int		main(int ac, char **av)
 {
-	t_json_value* file;
-	t_json_string* string;
-	int fd;
-	char *str;
+	t_json_value	*file;
+	t_json_string	*string;
+	int				fd;
+	char			*str;
 
 	if (ac != 2)
 		;

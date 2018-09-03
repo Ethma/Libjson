@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 14:12:59 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/30 15:17:02 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/08/31 16:46:00 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ t_json_value	*new_json_value(t_json_file *file, t_json_value *parent)
 		return (ft_fill_json_value(parent, null, NULL));
 	if (type == string)
 		return (new_string(file, parent));
+	if (type == object)
+		return (new_object(file, parent));
 	if (type == array)
 		return (new_array(file, parent));
 	return (NULL);
