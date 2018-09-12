@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/03 16:03:35 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/12 12:01:15 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,24 +38,15 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 	return (cou);
 }
 
-
-t_json_string *make_new_array(t_json_file *file)
-{
-	t_json_array *tab;
-
-	
-	if (tab = (t_json_array *)malloc(sizeof(t_json_array)) == NULL)
-		return (NULL);
-}
-
 t_json_value *new_array(t_json_file *file, t_json_value *parent)
 {
 	t_json_array *new_array;
+	t_json_value *array;
 
 	if (file->str == NULL || file->pos >= file->len
-	|| file->str[file->pos] != '[')
+	|| file->str[file->pos] != '['
+		&& (array = ft_fill_json_value(parent, array, NULL)) == NULL)
 		return (NULL);
-	if ((new_array = make_new_array(file)) == NULL)
-		return (NULL);
-	return (ft_fill_json_value(parent, array, new_array));
+	
+	return (array);
 }
