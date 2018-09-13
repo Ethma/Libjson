@@ -11,8 +11,9 @@ json_init.c \
 json_new_bool.c \
 json_new_number.c \
 json_new_object.c \
+json_new_array.c \
 json_new_string.c \
-json_new_value.c 
+json_new_value.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 L        = -L./libc

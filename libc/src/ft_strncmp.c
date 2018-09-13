@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_is_double.c                                     :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/09 10:48:39 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/13 13:34:52 by mabessir         ###   ########.fr       */
+/*   Created: 2017/10/12 11:59:35 by Mendy             #+#    #+#             */
+/*   Updated: 2018/09/13 17:23:27 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libc.h"
 
-int		ft_is_double(t_json_file *file)
+int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	unsigned long pos;
+	size_t i;
 
-	pos = file->pos;
-	if (file->str[pos] == '+' || file->str[pos] == '-')
+	i = 0;
+	if (n == 0)
+		return (0);
+	while (s1[i] && i < n - 1)
 	{
-		pos++;
-		if (file->str[pos] == '+' || file->str[pos] == '-')
-			return (2);
+		if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+			return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+		i++;
 	}
-	while (pos < file->len)
-	{
-		if (ft_isdigit(file->str[pos]))
-			pos++;
-		else if (file->str[pos] == '.')
-			return (1);
-		else if (file->str[pos] == 'e')
-			return (1);
-		else if (file->str[pos] == 'E')
-			return (1);
-		else
-			return (0);
-	}
+	if (((unsigned char *)s1)[i] != ((unsigned char *)s2)[i])
+		return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
 	return (0);
 }

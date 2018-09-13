@@ -1,6 +1,7 @@
 {
-    "files.associations": {
-        "json.h": "c",
-        "libc.h": "c"
-    }
+	"files.associations": {
+		"json.h": "c",
+		"libc.h": "c",
+		"get_next_line.h": "c"
+	}
 }

@@ -28,7 +28,9 @@ FILES = ft_strlen.c \
 	ft_strchr.c \
 	ft_strsub.c \
 	ft_memcpy.c \
-	ft_strncpy.c
+	ft_strncpy.c \
+	ft_free.c \
+	ft_strncmp.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 

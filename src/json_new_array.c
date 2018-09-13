@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/12 12:01:15 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/13 11:35:37 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,31 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 	return (cou);
 }
 
-t_json_value *new_array(t_json_file *file, t_json_value *parent)
+t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 {
 	t_json_array *new_array;
-	t_json_value *array;
+	t_json_value *ret;
 
-	if (file->str == NULL || file->pos >= file->len
-	|| file->str[file->pos] != '['
-		&& (array = ft_fill_json_value(parent, array, NULL)) == NULL)
+	if (f->str == NULL || f->pos >= f->len
+	|| f->str[f->pos] != '['
+		|| (ret = ft_fill_json_value(parent, array, NULL)) == NULL)
 		return (NULL);
-	
-	return (array);
+	if ((new_array = (t_json_array *)malloc(sizeof(t_json_array))) == NULL
+		|| ft_free(ret))
+		return (NULL);
+	new_array->nb = get_array_size(f, f->pos++);
+	if ((new_array->value = (t_json_value **)malloc(sizeof(t_json_value *)
+	* new_array->nb)) == NULL && ft_free(ret))
+		return (NULL);
+	f->index = 0;
+	while (f->index < new_array->nb)
+	{
+		new_array->value[f->index++] = new_json_value(f, ret);
+		pass_spaces(f);
+		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
+	}
+	pass_spaces(f);
+	f->pos += (f->str[f->pos] == ']' && f->pos < f->len) ? 1 : 0;
+	ret->ptr = (void *)new_array;
+	return (ret);
 }

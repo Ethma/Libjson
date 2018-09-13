@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/03 12:44:01 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/13 18:58:05 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 
 int		main(int ac, char **av)
 {
-	t_json_value	*file;
+	t_json_value	*value;
 	t_json_string	*string;
 	int				fd;
 	char			*str;
+	int				*a;
+	char 			*strr;
+//	t_bool			*nbool;
 
 	if (ac != 2)
-		;
-	if (av[0] == NULL)
+		return (0);
+	if (av[1] == NULL)
 		;
 	if (!(fd = open(av[1], O_RDONLY)))
 		return (0);
@@ -34,10 +37,17 @@ int		main(int ac, char **av)
 		.index = 0};
 */
 	printf("%s\n", str);
-	file = json_init(str);
-	string = (t_json_string *)file->ptr;
+	value = json_init(str);
+	a = (int *)value->ptr;
+//	nbool = (t_bool *)value->ptr;
+//	value = (t_json_string *)value->ptr;
+//	printf("%d\n", *a);
+	string = 0;
 	printf("ok?\n");
-	printf("type = %i\n", file->type);
-	printf("string = %s\n", string->str);
+//	printf("%u\n", *nbool);
+//	printf("%c\n", nbool);
+//	printf("%s\n", null);
+//	printf("type = %i\n", value->type);
+//	printf("string = %s\n", string->str);
 	return (0);
 }

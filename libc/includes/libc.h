@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/08/02 17:09:15 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/13 17:22:09 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,6 @@ void	ft_strdel(char **as);
 void	*ft_memcpy(void *s1, const void *s2, size_t n);
 
 char	*ft_strncpy(char *s1, const char *s2, size_t n);
+
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 #endif
