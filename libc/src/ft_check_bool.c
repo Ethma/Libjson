@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 12:34:09 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/13 19:02:13 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/17 13:45:36 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,12 @@
 
 int		check_bool(t_json_file *file)
 {
-	if (file->pos + 3 < file->len)
-	{
-		if ((file->str[file->pos] == 't' || file->str[file->pos == 'T'])
-		&& (file->str[file->pos + 1] == 'r' || file->str[file->pos + 1] == 'R')
-		&& (file->str[file->pos + 2] == 'u' || file->str[file->pos + 2] == 'U')
-		&& (file->str[file->pos + 3] == 'E' || file->str[file->pos + 3] == 'E'))
-			return (1);
-	}
-	if (file->pos + 4 < file->len)
-	{
-		if ((file->str[file->pos] == 'f' || file->str[file->pos == 'F'])
-		&& (file->str[file->pos + 1] == 'a' || file->str[file->pos + 1] == 'A')
-		&& (file->str[file->pos + 2] == 'l' || file->str[file->pos + 2] == 'L')
-		&& (file->str[file->pos + 3] == 's' || file->str[file->pos + 3] == 'S')
-		&& (file->str[file->pos + 4] == 'e' || file->str[file->pos + 4] == 'E'))
-			return (2);
-	}
+	const char *str;
+
+	str = file->str + file->pos;
+	if (!ft_strncmp(str, "TRUE", 4) || !ft_strncmp(str, "true", 4))
+		return (1);
+	else if (!ft_strncmp(str, "FALSE", 5) || !ft_strncmp(str, "false", 5))
+		return (2);
 	return (0);
 }

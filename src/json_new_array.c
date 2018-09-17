@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/13 11:35:37 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/17 14:56:03 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 	unsigned long cou;
 	unsigned long *c;
 
+	printf("pos in = %lu\n", pos);
 	c = (unsigned long[4]){(file->str[file->pos++] == '['), 0, 0, 0};
 	while (pos < file->len && ft_isspace(file->str[pos]))
 		pos++;
@@ -35,6 +36,7 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 			c[3] ^= 1;
 		pos++;
 	}
+	printf("cou = %lu\n", cou);
 	return (cou);
 }
 
@@ -50,7 +52,9 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 	if ((new_array = (t_json_array *)malloc(sizeof(t_json_array))) == NULL
 		|| ft_free(ret))
 		return (NULL);
-	new_array->nb = get_array_size(f, f->pos++);
+	printf("pos 1 = %lu\n", f->pos);
+	new_array->nb = get_array_size(f, f->pos + 1);
+	printf("pos 2 = %lu\n", f->pos);
 	if ((new_array->value = (t_json_value **)malloc(sizeof(t_json_value *)
 	* new_array->nb)) == NULL && ft_free(ret))
 		return (NULL);

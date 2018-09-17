@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/13 18:58:05 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/17 14:47:47 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 int		main(int ac, char **av)
 {
 	t_json_value	*value;
+	t_json_array	*array;
 	t_json_string	*string;
 	int				fd;
 	char			*str;
-	int				*a;
-	char 			*strr;
+//	int				*a;
 //	t_bool			*nbool;
 
 	if (ac != 2)
@@ -36,14 +36,18 @@ int		main(int ac, char **av)
 		.pos = 0,
 		.index = 0};
 */
-	printf("%s\n", str);
+//	printf("%s\n", str);
 	value = json_init(str);
-	a = (int *)value->ptr;
+	array = (t_json_array *)value->ptr;
+	string = (t_json_string *)array->value[0]->ptr;
+	printf("string = %s\n", string->str);
+//	a = (int *)array->value[0]->ptr;
+	//printf("number = %d\n", *a);
 //	nbool = (t_bool *)value->ptr;
+//	printf("%hhu\n", *nbool);
 //	value = (t_json_string *)value->ptr;
 //	printf("%d\n", *a);
-	string = 0;
-	printf("ok?\n");
+//	string = 0;
 //	printf("%u\n", *nbool);
 //	printf("%c\n", nbool);
 //	printf("%s\n", null);
