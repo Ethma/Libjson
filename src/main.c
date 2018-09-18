@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/17 14:47:47 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/18 11:29:35 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ int		main(int ac, char **av)
 {
 	t_json_value	*value;
 	t_json_array	*array;
-	t_json_string	*string;
+//	t_json_string	*string;
 	int				fd;
 	char			*str;
-//	int				*a;
+	double				*a;
 //	t_bool			*nbool;
 
 	if (ac != 2)
@@ -39,10 +39,11 @@ int		main(int ac, char **av)
 //	printf("%s\n", str);
 	value = json_init(str);
 	array = (t_json_array *)value->ptr;
-	string = (t_json_string *)array->value[0]->ptr;
-	printf("string = %s\n", string->str);
-//	a = (int *)array->value[0]->ptr;
-	//printf("number = %d\n", *a);
+//	string = (t_json_string *)array->value[0]->ptr;
+	//printf("string = %s\n", string->str);
+	a = (double *)array->value[0]->ptr;
+//	a = (double *)value->ptr;
+	printf("number = %f\n", *a);
 //	nbool = (t_bool *)value->ptr;
 //	printf("%hhu\n", *nbool);
 //	value = (t_json_string *)value->ptr;

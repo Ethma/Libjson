@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 13:58:59 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/13 17:03:40 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/18 10:57:28 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,13 @@ static void				jump_number(t_json_file *file)
 
 static	t_json_value	*ft_number(t_json_file *file, t_json_value *num)
 {
+	double *numb;
+
 	num->type = number;
 	if ((num->ptr = malloc(sizeof(double))) == NULL)
 		return (NULL);
 	*(double *)(num->ptr) = ft_atof(&file->str[file->pos]);
+	numb = (double *)num->ptr;
 	return (num);
 }
 
