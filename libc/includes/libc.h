@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/13 17:22:09 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/20 12:47:36 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 int		ft_atoi(const char *str);
 
-int		ft_pow(int nb, int pw);
+double	ft_pow(double nb, double pw);
+
+double	ft_powe(double nb);
 
 int		ft_isspace(const char c);
 

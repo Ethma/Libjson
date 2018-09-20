@@ -13,6 +13,7 @@ FILES = ft_strlen.c \
 	ft_isdigit.c \
 	ft_isspace.c \
 	ft_pow.c \
+	ft_powe.c \
 	ft_atoi.c \
 	ft_atof.c \
 	ft_check_bool.c \

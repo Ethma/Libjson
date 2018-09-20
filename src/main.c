@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/18 11:29:35 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/20 13:45:48 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,8 @@ int		main(int ac, char **av)
 //	t_json_string	*string;
 	int				fd;
 	char			*str;
-	double				*a;
+	double			*a;
+	int				*b;
 //	t_bool			*nbool;
 
 	if (ac != 2)
@@ -31,18 +32,20 @@ int		main(int ac, char **av)
 		return (0);
 	get_next_line(fd, &str);
 /*	file = (t_json_file){
-		.str = str,
-		.len = ft_strlen(str),
-		.pos = 0,
-		.index = 0};
+**		.str = str,
+**		.len = ft_strlen(str),
+**		.pos = 0,
+**		.index = 0};
 */
 //	printf("%s\n", str);
 	value = json_init(str);
-	array = (t_json_array *)value->ptr;
+	array = 0;
 //	string = (t_json_string *)array->value[0]->ptr;
 	//printf("string = %s\n", string->str);
-	a = (double *)array->value[0]->ptr;
-//	a = (double *)value->ptr;
+//	a = (double *)array->value[0]->ptr;
+	b = (int *)value->ptr;
+	a = (double *)value->ptr;
+//	printf("number = %i\n", *b);
 	printf("number = %f\n", *a);
 //	nbool = (t_bool *)value->ptr;
 //	printf("%hhu\n", *nbool);
