@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/24 15:23:34 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/24 16:53:50 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 int		main(int ac, char **av)
 {
 	t_json_value	*value;
-//	t_json_array	*array;
+	t_json_array	*array;
 //	t_json_array	*array2;
 //	t_json_object	*object;
-//	t_json_string	*string;
+	t_json_string	*string;
 //	t_json_string	*string2;
 	int				fd;
 	char			*str;
@@ -43,11 +43,11 @@ int		main(int ac, char **av)
 //	printf("%s\n", str);
 	value = json_init(str);
 //	object = (t_json_object *)value->ptr;
-//	array = (t_json_array *)value->ptr;
+	array = (t_json_array *)value->ptr;
 //	array2 = (t_json_array *)array->value[0]->ptr;
-//	string = (t_json_string *)array2->value[1]->ptr;
+	string = (t_json_string *)array->value[1]->ptr;
 //	string2 = (t_json_string *)array->value[2]->ptr;
-//	printf("string = %s\n", string->str);
+	printf("string = %s\n", string->str);
 //	printf("string2 = %s\n", string2->str);
 //	b = (int *)array2->value[0]->ptr;
 //	a = (double *)array->value[1]->ptr;

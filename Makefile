@@ -2,7 +2,7 @@ NAME	 = libjson.a
 CC		 = gcc
 OBJ_NAME = $(FILES:.c=.o)
 OBJ_PATH = ./obj
-CFLAGS	 = -Wall -Wextra -Werror
+CFLAGS	 = -Wall -Wextra -Werror -g3
 SRC_PATH = ./src
 INCLUDE = -I./includes -I/libc/includes
 FILES	 = json_fill_value.c \
