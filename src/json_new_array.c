@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/20 15:54:39 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/24 14:10:33 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 			c[3] ^= 1;
 		pos++;
 	}
-	printf("cou = %lu\n", cou);
 	return (cou);
 }
 
@@ -58,10 +57,10 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 	f->index = 0;
 	while (f->index < new_array->nb)
 	{
-		printf("str = %s\n", f->str + f->pos);
 		new_array->value[f->index++] = new_json_value(f, ret);
 		pass_spaces(f);
 		f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
+		f->pos += (f->str[f->pos] == ']' && f->pos < f->len) ? 1 : 0;
 		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 	}
 	pass_spaces(f);

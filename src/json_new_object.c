@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/13 11:32:56 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/24 15:48:18 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,26 +42,27 @@ unsigned long	get_size(t_json_file *file, unsigned long pos)
 	return ((cou == count2) ? cou : (unsigned long)-1);
 }
 
-t_json_pair		*new_pair(t_json_file *file, t_json_value *parent)
+t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 {
 	t_json_pair *pair;
+	t_json_value *value;
 
-	while (ft_isspace(file->str[file->pos]))
-		file->pos++;
+	pass_spaces(f);
 	if ((pair = (t_json_pair *)malloc(sizeof(t_json_pair))) == NULL)
 		return (pair);
-	if ((pair->key = make_new_string(file)) == NULL)
+	if ((pair->key = make_new_string(f)) == NULL)
 		return (ft_free(pair));
-	while (ft_isspace(file->str[file->pos]))
-		file->pos++;
-	if (file->str[file->pos] != ':' && ft_free(pair->key))
+	f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
+	pass_spaces(f);
+	if (f->str[f->pos] != ':' && ft_free(pair->key) == NULL)
 		return (ft_free(pair));
-	file->pos++;
-	while (ft_isspace(file->str[file->pos]))
-		file->pos++;
-	if ((pair->value = new_json_value(file, parent)) == NULL
-		&& ft_free(pair->key))
-		return (ft_free(pair));
+	f->pos++;
+	pass_spaces(f);
+	if ((value = new_json_value(f, parent))== NULL)
+		return (NULL);
+//	if ((pair->value = new_json_value(f, parent)) == NULL
+	//&& ft_free(pair->key) == NULL)
+//		return (ft_free(pair));
 	return (pair);
 }
 
@@ -77,7 +78,7 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 	if ((obj = (t_json_object *)malloc(sizeof(t_json_object))) == NULL
 	&& ft_free(ret))
 		return (ft_free(obj));
-	obj->nb = get_size(f, f->pos++);
+	obj->nb = get_size(f, f->pos + 1);
 	if ((obj->pair = (t_json_pair **)malloc(sizeof(t_json_pair *)
 	* obj->nb)) == NULL && ft_free(ret))
 		return (ft_free(obj));
@@ -85,7 +86,9 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 	while (f->index < obj->nb)
 	{
 		obj->pair[f->index++] = new_pair(f, ret);
+		printf("ok2\n");
 		pass_spaces(f);
+		f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
 		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 	}
 	pass_spaces(f);
