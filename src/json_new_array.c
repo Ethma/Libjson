@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/24 14:10:33 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/25 11:12:02 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 	unsigned long *c;
 
 	c = (unsigned long[4]){(file->str[file->pos++] == '['), 0, 0, 0};
-	while (pos < file->len && ft_isspace(file->str[pos]))
-		pos++;
+	pass_spaces(file);
 	cou = 1;
 	if (file->str[pos] == ']')
 		return (0);
