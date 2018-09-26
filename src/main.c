@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/25 14:25:39 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/26 18:57:03 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int		main(int ac, char **av)
 //	t_json_array	*array;
 //	t_json_array	*array2;
 	t_json_object	*object;
-//	t_json_string	*string;
-	t_json_pair		*pair;
+	t_json_string	*string;
+	t_json_pair		**pair;
 //	t_json_string	*string2;
 	int				fd;
 	char			*str;
@@ -44,14 +44,12 @@ int		main(int ac, char **av)
 //	printf("%s\n", str);
 	value = json_init(str);
 	object = (t_json_object *)value->ptr;
-	printf("nb = %lu\n", object->nb);
-	pair = object->pair[0];
-	printf("%p\n", pair->key);
-//	string = (t_json_string *)pair->key;
-//	printf("string = %s\n", string->str);
+	pair = object->pair;
+//	string = (t_json_string *)pair[0]->value->ptr;
 //	array = (t_json_array *)value->ptr;
 //	array2 = (t_json_array *)array->value[0]->ptr;
-//	string = (t_json_string *)object->pair[0]->value->ptr;
+	string = (t_json_string *)object->pair[2]->key;
+	printf("string =%s\n", string->str);
 //	string2 = (t_json_string *)array->value[2]->ptr;
 //	printf("string2 = %s\n", string2->str);
 //	b = (int *)array2->value[0]->ptr;

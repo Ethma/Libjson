@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/25 14:14:23 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/26 18:56:53 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 		return (ft_free(pair));
 	f->pos++;
 	pass_spaces(f);
-	if ((pair->value = new_json_value(f, parent)) && ft_free(pair->key) == NULL)
+	if ((pair->value = new_json_value(f, parent)) == NULL && ft_free(pair->key) == NULL)
 		return (ft_free(pair));
 	return (pair);
 }
@@ -66,22 +66,23 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 {
 	t_json_object	*obj;
 	t_json_value	*ret;
+	unsigned long	index;
 
 	if (f->pos >= f->len || f->str == NULL ||
 	f->str[f->pos] != '{'
 	|| (ret = ft_fill_json_value(parent, object, NULL)) == NULL)
 		return (NULL);
-	if ((obj = (t_json_object *)malloc(sizeof(t_json_object))) == NULL
-	&& ft_free(ret) == NULL)
-		return (ft_free(obj));
+	if ((obj = (t_json_object *)malloc(sizeof(t_json_object))) == NULL)
+		return (ft_free(ret));
 	obj->nb = get_size(f, f->pos + 1);
 	if ((obj->pair = (t_json_pair **)malloc(sizeof(t_json_pair *)
 	* obj->nb)) == NULL && ft_free(ret) == NULL)
 		return (ft_free(obj));
-	f->index = 0;
-	while (f->index < obj->nb)
+	index = 0;
+	while (index < obj->nb)
 	{
-		obj->pair[f->index++] = new_pair(f, ret);
+		printf("%lu\n", index);
+		obj->pair[index++] = new_pair(f, ret);
 		pass_spaces(f);
 		f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
 		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;

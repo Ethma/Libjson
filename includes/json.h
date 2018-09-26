@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:45:27 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/17 13:35:01 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/26 16:26:10 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,11 @@ t_json_value_type			get_json_value_type(t_json_file *file);
 t_json_value				*new_object(t_json_file *f, t_json_value *parent);
 
 t_json_value				*new_array(t_json_file *file, t_json_value *parent);
+
+void	*json_get_values(t_json_value *value, int type);
+
+void	*json_get_big_values(t_json_value *value, int type);
+
+void	*json_get_num_values(t_json_value *value, int type);
 
 #endif

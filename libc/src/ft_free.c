@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 10:38:44 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/13 12:59:46 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/26 17:55:52 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 void	*ft_free(void *ptr)
 {
 	if (!ptr)
+	{
 		free(ptr);
+		ptr = NULL;
+	}
 	return (NULL);
 }
