@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/26 18:03:59 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:48:39 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,10 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 	{
 		new_array->value[index++] = new_json_value(f, ret);
 		pass_spaces(f);
+		pass_items(f);
 	}
 	pass_spaces(f);
+	f->pos += (f->str[f->pos] == ']' && f->pos < f->len) ? 1 : 0;
 	ret->ptr = (void *)new_array;
 	return (ret);
 }

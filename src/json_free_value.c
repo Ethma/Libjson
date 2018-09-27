@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pass_spaces.c                                   :+:      :+:    :+:   */
+/*   json_free_value.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/19 14:34:24 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/27 11:40:53 by mabessir         ###   ########.fr       */
+/*   Created: 2018/09/27 16:17:57 by mabessir          #+#    #+#             */
+/*   Updated: 2018/09/27 16:57:12 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libc.h"
+#include "../includes/json.h"
+#include "../libc/includes/libc.h"
 
-void	pass_spaces(t_json_file *file)
+void	*json_free_string(void **ptr)
 {
-	while (ft_isspace(file->str[file->pos]) && file->pos < file->len)
-		++file->pos;
-}
+	t_json_value *val;
+	t_json_string *string;
 
-void	pass_items(t_json_file *f)
-{
-		f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
-		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
+	if (!(val = (t_json_value *)(*ptr)))
+		return (NULL);
+	if (!(string = (t_json_string *)val->ptr))
+		return (NULL);
+	ft_free(string->str);
+	ft_free(string);
+	ft_free(val);
+	return (NULL);
 }

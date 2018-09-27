@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/20 12:47:36 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/27 13:10:49 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,6 @@ void	*ft_memcpy(void *s1, const void *s2, size_t n);
 char	*ft_strncpy(char *s1, const char *s2, size_t n);
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+
+void	pass_items(t_json_file *f);
 #endif

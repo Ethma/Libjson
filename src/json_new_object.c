@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/26 18:56:53 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/09/27 14:36:17 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,9 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 	index = 0;
 	while (index < obj->nb)
 	{
-		printf("%lu\n", index);
 		obj->pair[index++] = new_pair(f, ret);
 		pass_spaces(f);
-		f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
-		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
+		pass_items(f);
 	}
 	pass_spaces(f);
 	f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;
