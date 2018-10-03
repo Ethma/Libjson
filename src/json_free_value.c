@@ -6,38 +6,72 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 16:17:57 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/02 12:20:49 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/03 18:06:15 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
 #include "../libc/includes/libc.h"
 
-void	*json_free_string(void **ptr)
+void	json_free_pair(t_json_pair *pair)
 {
-	t_json_value *val;
-	t_json_string *string;
+	if (pair == NULL)
+		return ;
+	json_free_string(pair->key);
+	json_free(pair->value);
+	ft_free(pair);
+}
+void	json_free_object(t_json_object *obj)
+{
+	unsigned long nb;
 
-	if (!(val = (t_json_value *)(*ptr)))
-		return (NULL);
-	if (!(string = (t_json_string *)val->ptr))
-		return (NULL);
-	ft_free(string->str);
-	ft_free(string);
-	ft_free(val);
-	return (NULL);
+	if (obj == NULL || obj->pair == 0 || obj->nb == 0)
+		return ;
+	nb = 0;
+	while (nb < obj->nb)
+		json_free_pair(obj->pair[nb++]);
+	ft_free(obj->pair);
+	nb = 0;
+	obj->nb = 0;
+	ft_free(obj);
+}
+void	json_free_array(t_json_array *array)
+{
+	unsigned long nb;
+
+	if (array == NULL || array->nb == 0)
+		return ;
+	nb = 0;
+	while (nb < array->nb)
+		json_free(array->value[nb++]);
+	ft_free(array->value);
+	array->nb = 0;
+	ft_free(array);
 }
 
-void	*json_free_number(void *ptr)
+void	json_free_string(t_json_string *string)
 {
-	t_json_value *val;
-	double	*num;
+	if (string == NULL)
+		return ;
+	ft_free(string->str);
+	string->len = 0;
+	ft_free(string);
+}
 
-	if (!(val = (t_json_value *)(*ptr)))
-		return(NULL);
-	if (!(num = (double *)val->ptr))
-		retrun (NULL);
-	ft_free(num);
+void	json_free(t_json_value *val)
+{
+	if (val == NULL)
+		return ;
+	if (val->type == 1 || val->type == 2 || val->type == 5 || val->type == 6)
+		if (val->ptr != NULL)
+			ft_free(val->ptr);
+	if (val->type == 3)
+		json_free_array(val->ptr);
+	if (val->type == 4)
+		json_free_object(val->ptr);
+	if (val->type == 7)
+		json_free_string((val->ptr));
+	val->parent = NULL;
+	val->type = none;
 	ft_free(val);
-	return (NULL);
 }

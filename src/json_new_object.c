@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/27 14:36:17 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/03 18:01:56 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,9 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 	if ((pair = (t_json_pair *)malloc(sizeof(t_json_pair))) == NULL)
 		return (pair);
 	if ((pair->key = make_new_string(f)) == NULL)
+	{
 		return (ft_free(pair));
+	}
 	f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
 	pass_spaces(f);
 	if (f->str[f->pos] != ':' && ft_free(pair->key) == NULL)

@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/27 16:56:07 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/03 18:02:32 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int		main(int ac, char **av)
 //	t_json_array	*array;
 //	t_json_array	*array2;
 //	t_json_object	*object;
-	t_json_string	*string;
+//	t_json_object	*object2;
+	//t_json_string	*string;
 //	t_json_pair		**pair;
 //	t_json_string	*string2;
 	int				fd;
@@ -35,22 +36,18 @@ int		main(int ac, char **av)
 	if (!(fd = open(av[1], O_RDONLY)))
 		return (0);
 	get_next_line(fd, &str);
-/*	file = (t_json_file){
-**		.str = str,
-**		.len = ft_strlen(str),
-**		.pos = 0,
-**		.index = 0};
-*/
 //	printf("%s\n", str);
 	value = json_init(str);
-	//object = (t_json_object *)value->ptr;
+//	object = (t_json_object *)value->ptr;
+	//object2 = (t_json_object *)object->pair[0]->value->ptr;
 //	pair = object->pair;
-//	string = (t_json_string *)pair[0]->value->ptr;
 //	array = (t_json_array *)value->ptr;
 //	array2 = (t_json_array *)array->value[3]->ptr;
-	string = (t_json_string *)value->ptr;
+//	string = (t_json_string *)object2->pair[0]->value->ptr;
+//	printf("%s\n", string->str);
 	ft_free(str);
-	json_free_string((void **)&value);
+	json_free(value);
+//	ft_free(value);
 //	ft_free(array->value[0]->ptr);
 //	ft_free(array->value[0]);
 //	ft_free(array->value);

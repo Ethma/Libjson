@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:45:27 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/27 16:52:31 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/03 17:51:18 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,10 @@ typedef enum				e_json_value_type
 
 typedef struct				s_json_file
 {
-	const char		*str;
-	unsigned long	len;
-	unsigned long	pos;
-	unsigned long	index;
+	const char			*str;
+	unsigned long		len;
+	unsigned long		pos;
+	unsigned long		index;
 }							t_json_file;
 
 struct						s_json_value
@@ -56,20 +56,20 @@ typedef struct				s_json_string
 
 typedef struct				s_json_array
 {
-	unsigned long	nb;
-	t_json_value	**value;
+	unsigned long		nb;
+	t_json_value		**value;
 }							t_json_array;
 
 typedef struct				s_json_pair
 {
-	t_json_string	*key;
-	t_json_value	*value;
+	t_json_string		*key;
+	t_json_value		*value;
 }							t_json_pair;
 
 typedef struct				s_json_object
 {
-	unsigned long	nb;
-	t_json_pair		**pair;
+	unsigned long		nb;
+	t_json_pair			**pair;
 }							t_json_object;
 
 t_json_value				*json_init(char *str);
@@ -103,5 +103,14 @@ void						*json_get_big_values(t_json_value *value, int type);
 
 void						*json_get_num_values(t_json_value *value, int type);
 
-void						*json_free_string(void **ptr);
+void						json_free(t_json_value *val);
+
+void						json_free_string(t_json_string *string);
+
+void						json_free_array(t_json_array *array);
+
+void						json_free_object(t_json_object *obj);
+
+void						json_free_pair(t_json_pair *pair);
+
 #endif
