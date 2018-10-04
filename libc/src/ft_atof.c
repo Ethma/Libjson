@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 12:27:09 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/20 13:44:34 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/04 13:42:06 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,5 @@ double	ft_atof(const char *str)
 			return (res * neg * ft_powe((double)ft_atoi(++str)));
 		return (res * neg * ft_powe((double)ft_atoi(++str)));
 	}
-	printf("%g\n", res);
 	return (res * neg);
 }

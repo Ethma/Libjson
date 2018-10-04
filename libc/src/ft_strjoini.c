@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strjoini.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/11 14:38:45 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/04 13:19:12 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/04 13:25:21 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libc.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoini(char const *s1, char const *s2, size_t i, size_t j)
 {
 	char	*str;
 	char	*ret;
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	if (!(str = (char*)malloc(ft_strlen(s1) + ft_strlen(s2) + 1)))
+	if (!(str = (char*)malloc(i + j + 1)))
 		return (NULL);
 	ret = str;
 	while (*s1)

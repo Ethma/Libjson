@@ -8,6 +8,7 @@ OBJ_NAME = $(FILES:%.c=%.o)
 OBJ_PATH = ./obj
 FILES = ft_strlen.c \
 	ft_strjoin.c \
+	ft_strjoini.c \
 	ft_strdup.c \
 	ft_strdel.c \
 	ft_isdigit.c \

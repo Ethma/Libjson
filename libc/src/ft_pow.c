@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/18 13:28:29 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/20 11:12:38 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/04 13:41:59 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,5 @@ double	ft_pow(double nb, double pw)
 		ret *= nb;
 	while (pw < 0 && pw++)
 		ret /= nb;
-	printf("%f\n", ret);
 	return (ret);
 }

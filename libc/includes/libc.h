@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/04 11:08:22 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/04 13:21:32 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ char	*ft_strndup(const char *s1, size_t n);
 
 char	*ft_strjoin(char const *s1, char const *s2);
 
+char	*ft_strjoini(char const *s1, char const *s2, size_t i, size_t j);
+
 size_t	ft_strlen(const char *s);
 
 char	*ft_strnew(size_t size);
@@ -67,7 +69,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 
 void	pass_items(t_json_file *f);
 
-char	*ft_strmerge(char *src, char *dest);
+char	*ft_strmerge(char *src, char *dest, size_t i, size_t j);
 
 char	*ft_readfile(int fd);
 #endif
