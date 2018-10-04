@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/03 18:01:56 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/04 17:29:53 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,15 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 	if ((pair = (t_json_pair *)malloc(sizeof(t_json_pair))) == NULL)
 		return (pair);
 	if ((pair->key = make_new_string(f)) == NULL)
-	{
 		return (ft_free(pair));
-	}
 	f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
 	pass_spaces(f);
 	if (f->str[f->pos] != ':' && ft_free(pair->key) == NULL)
 		return (ft_free(pair));
 	f->pos++;
 	pass_spaces(f);
-	if ((pair->value = new_json_value(f, parent)) == NULL && ft_free(pair->key) == NULL)
+	if ((pair->value = new_json_value(f, parent)) == NULL
+	&& ft_free(pair->key) == NULL)
 		return (ft_free(pair));
 	return (pair);
 }
@@ -70,22 +69,28 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 	t_json_value	*ret;
 	unsigned long	index;
 
-	if (f->pos >= f->len || f->str == NULL ||
-	f->str[f->pos] != '{'
+	if (f->pos >= f->len || f->str == NULL || f->str[f->pos] != '{'
 	|| (ret = ft_fill_json_value(parent, object, NULL)) == NULL)
 		return (NULL);
 	if ((obj = (t_json_object *)malloc(sizeof(t_json_object))) == NULL)
 		return (ft_free(ret));
-	obj->nb = get_size(f, f->pos + 1);
+	if ((obj->nb = get_size(f, f->pos + 1)) == 0 && ft_free(obj) == NULL)
+		return (ft_free(ret));
 	if ((obj->pair = (t_json_pair **)malloc(sizeof(t_json_pair *)
 	* obj->nb)) == NULL && ft_free(ret) == NULL)
 		return (ft_free(obj));
 	index = 0;
 	while (index < obj->nb)
 	{
-		obj->pair[index++] = new_pair(f, ret);
+		if ((obj->pair[index++] = new_pair(f, ret)) == NULL)
+		{
+			ft_free(obj->pair[0]);
+			ft_free(ret);
+			return(ft_free(obj));
+		} 
 		pass_spaces(f);
 		pass_items(f);
+	f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;
 	}
 	pass_spaces(f);
 	f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;
