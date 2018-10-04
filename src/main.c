@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/03 18:02:32 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/04 11:07:58 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int		main(int ac, char **av)
 		;
 	if (!(fd = open(av[1], O_RDONLY)))
 		return (0);
-	get_next_line(fd, &str);
 //	printf("%s\n", str);
 	value = json_init(str);
 //	object = (t_json_object *)value->ptr;
