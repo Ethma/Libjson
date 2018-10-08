@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 14:07:51 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/04 17:20:57 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/05 17:46:59 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ t_json_string	*make_new_string(t_json_file *file)
 	if ((str->str = ft_strndup(&file->str[file->pos] + 1, str->len)) == NULL)
 		return (NULL);
 	file->pos += str->len + 1;
+	file->pos += (file->str[file->pos] == '"' && file->pos < file->len) ? 1 : 0;
 	return (str);
 }
 

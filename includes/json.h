@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:45:27 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/03 17:51:18 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/08 10:46:48 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+#include <sys/types.h> 
+#include <sys/stat.h> 
+
 # define TRUE 1
 # define FALSE 0
 

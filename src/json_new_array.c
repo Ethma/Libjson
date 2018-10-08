@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/27 13:48:39 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/05 17:39:13 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 
 t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 {
-	t_json_array	*new_array;
+	t_json_array	*arr;
 	t_json_value	*ret;
 	unsigned long	index;
 
@@ -47,21 +47,26 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 	|| f->str[f->pos] != '['
 		|| (ret = ft_fill_json_value(parent, array, NULL)) == NULL)
 		return (NULL);
-	if ((new_array = (t_json_array *)malloc(sizeof(t_json_array))) == NULL)
+	if ((arr = (t_json_array *)malloc(sizeof(t_json_array))) == NULL)
 		return (ft_free(ret));
-	new_array->nb = get_array_size(f, f->pos + 1);
-	if ((new_array->value = (t_json_value **)malloc(sizeof(t_json_value *)
-	* new_array->nb)) == NULL && ft_free(ret) == NULL)
+	arr->nb = get_array_size(f, f->pos + 1);
+	if ((arr->value = (t_json_value **)malloc(sizeof(t_json_value *)
+	* arr->nb)) == NULL && ft_free(ret) == NULL)
 		return (NULL);
 	index = 0;
-	while (index < new_array->nb)
+	while (index < arr->nb)
 	{
-		new_array->value[index++] = new_json_value(f, ret);
+		if ((arr->value[index++] = new_json_value(f, ret)) == NULL)
+		{
+			json_free(ret);
+			json_free(*arr->value);
+			return(ft_free(arr));
+		}
 		pass_spaces(f);
 		pass_items(f);
 	}
 	pass_spaces(f);
 	f->pos += (f->str[f->pos] == ']' && f->pos < f->len) ? 1 : 0;
-	ret->ptr = (void *)new_array;
+	ret->ptr = (void *)arr;
 	return (ret);
 }

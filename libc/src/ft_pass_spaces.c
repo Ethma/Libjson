@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:34:24 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/27 11:40:53 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/08 14:29:21 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ void	pass_spaces(t_json_file *file)
 
 void	pass_items(t_json_file *f)
 {
+	if (f->str[f->pos] == '"' && ft_isalpha(f->str[f->pos]) == 0)
 		f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
-		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
+	f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 }

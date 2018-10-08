@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/04 17:29:53 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/08 14:50:52 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,20 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 	pass_spaces(f);
 	if ((pair = (t_json_pair *)malloc(sizeof(t_json_pair))) == NULL)
 		return (pair);
-	if ((pair->key = make_new_string(f)) == NULL)
+	if ((pair->key = make_new_string(f)) == NULL && ft_free(pair->key->str) == NULL)
 		return (ft_free(pair));
-	f->pos += (f->str[f->pos] == '"' && f->pos < f->len) ? 1 : 0;
+	printf("%s\n", pair->key->str);
 	pass_spaces(f);
 	if (f->str[f->pos] != ':' && ft_free(pair->key) == NULL)
 		return (ft_free(pair));
 	f->pos++;
 	pass_spaces(f);
 	if ((pair->value = new_json_value(f, parent)) == NULL
-	&& ft_free(pair->key) == NULL)
+	&& ft_free(pair->key->str) == NULL)
+	{
+		ft_free(pair->key);
 		return (ft_free(pair));
+	}
 	return (pair);
 }
 
@@ -84,13 +87,14 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 	{
 		if ((obj->pair[index++] = new_pair(f, ret)) == NULL)
 		{
-			ft_free(obj->pair[0]);
-			ft_free(ret);
+			json_free_pair(*obj->pair);
+			json_free(ret);
 			return(ft_free(obj));
 		} 
 		pass_spaces(f);
 		pass_items(f);
-	f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;
+		f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;
+		printf("pos = %c\n", f->str[f->pos]);
 	}
 	pass_spaces(f);
 	f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;

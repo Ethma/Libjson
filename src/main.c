@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/04 17:17:19 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/08 13:47:54 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,7 @@ int		main(int ac, char **av)
 		;
 	if (!(fd = open(av[1], O_RDONLY)))
 		return (0);
-//	printf("%s\n", str);
-	str = ft_readfile(fd);
+	str = ft_readfile(fd, av[1]);
 	if ((value = json_init(str)) == NULL) 
 	{
 		ft_free(str);

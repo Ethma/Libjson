@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   json_fill_value.c                                  :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 15:56:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/05 14:08:38 by mabessir         ###   ########.fr       */
+/*   Created: 2017/11/09 11:19:16 by mabessir          #+#    #+#             */
+/*   Updated: 2018/10/08 14:24:55 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/json.h"
+#include "../includes/libc.h"
 
-t_json_value	*ft_fill_json_value(t_json_value *parent,
-t_json_value_type type, void *ptr)
+int		ft_isalpha(int c)
 {
-	t_json_value *val;
-
-	if ((val = (t_json_value*)malloc(sizeof(t_json_value))) == NULL)
-		return (NULL);
-	val->type = type;
-	val->parent = parent;
-	val->ptr = ptr;
-	return (val);
+	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
+		return (1);
+	return (0);
 }

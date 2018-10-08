@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   json_fill_value.c                                  :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/05/27 15:56:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/05 14:08:38 by mabessir         ###   ########.fr       */
+/*   Created: 2017/11/08 14:56:22 by mabessir          #+#    #+#             */
+/*   Updated: 2018/10/08 12:03:13 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/json.h"
+#include "../includes/libc.h"
 
-t_json_value	*ft_fill_json_value(t_json_value *parent,
-t_json_value_type type, void *ptr)
+char	*ft_strstr(const char *haystack, const char *needle)
 {
-	t_json_value *val;
+	int i;
+	int j;
 
-	if ((val = (t_json_value*)malloc(sizeof(t_json_value))) == NULL)
-		return (NULL);
-	val->type = type;
-	val->parent = parent;
-	val->ptr = ptr;
-	return (val);
+	if (!*needle)
+		return ((char *)haystack);
+	i = 0;
+	while (haystack[i])
+	{
+		j = 0;
+		while (needle[j] == haystack[i + j])
+		{
+			if (needle[j + 1] == '\0')
+				return (((char *)haystack + i));
+			j++;
+		}
+		i++;
+	}
+	return (0);
 }

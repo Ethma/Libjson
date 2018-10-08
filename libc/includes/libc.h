@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/04 13:21:32 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/08 14:25:02 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,9 @@ void	pass_items(t_json_file *f);
 
 char	*ft_strmerge(char *src, char *dest, size_t i, size_t j);
 
-char	*ft_readfile(int fd);
+char	*ft_readfile(int fd, char *str);
+
+char	*ft_strstr(const char *haystack, const char *needle);
+
+int		ft_isalpha(int c);
 #endif
