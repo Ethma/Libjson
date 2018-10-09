@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/08 14:50:52 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/09 16:21:08 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 		return (pair);
 	if ((pair->key = make_new_string(f)) == NULL && ft_free(pair->key->str) == NULL)
 		return (ft_free(pair));
-	printf("%s\n", pair->key->str);
 	pass_spaces(f);
 	if (f->str[f->pos] != ':' && ft_free(pair->key) == NULL)
 		return (ft_free(pair));
@@ -92,9 +91,7 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 			return(ft_free(obj));
 		} 
 		pass_spaces(f);
-		pass_items(f);
-		f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;
-		printf("pos = %c\n", f->str[f->pos]);
+		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 	}
 	pass_spaces(f);
 	f->pos += (f->str[f->pos] == '}' && f->pos < f->len) ? 1 : 0;

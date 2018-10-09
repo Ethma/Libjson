@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/05 17:39:13 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/09 17:34:09 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 	while (pos < file->len && c[0])
 	{
 		cou += (file->str[pos] == ',' && c[0] == 1 && !c[1] && !c[2] && !c[3]);
-		c[0] += (file->str[pos] == '{') - (file->str[pos] == '}');
-		c[1] += (file->str[pos] == '[') - (file->str[pos] == ']');
+		c[0] += (file->str[pos] == '[') - (file->str[pos] == ']');
+		c[1] += (file->str[pos] == '{') - (file->str[pos] == '}');
 		if (file->str[pos] == '\"' && file->str[pos - 1] != '\\')
 			c[2] ^= 1;
 		if (file->str[pos] == '\'' && file->str[pos - 1] != '\\')
@@ -56,14 +56,16 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 	index = 0;
 	while (index < arr->nb)
 	{
+		printf("%s\n", f->str + f->pos);
 		if ((arr->value[index++] = new_json_value(f, ret)) == NULL)
 		{
+			printf("fk\n");
 			json_free(ret);
 			json_free(*arr->value);
 			return(ft_free(arr));
 		}
 		pass_spaces(f);
-		pass_items(f);
+		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 	}
 	pass_spaces(f);
 	f->pos += (f->str[f->pos] == ']' && f->pos < f->len) ? 1 : 0;
