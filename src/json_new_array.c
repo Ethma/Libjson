@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/09 17:34:09 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/11 14:07:46 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,8 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 	index = 0;
 	while (index < arr->nb)
 	{
-		printf("%s\n", f->str + f->pos);
 		if ((arr->value[index++] = new_json_value(f, ret)) == NULL)
 		{
-			printf("fk\n");
 			json_free(ret);
 			json_free(*arr->value);
 			return(ft_free(arr));

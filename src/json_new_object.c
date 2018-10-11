@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/09 16:21:08 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/11 14:05:49 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 {
 	t_json_pair *pair;
 
+	if (f->str[f->pos] == ':')
+		return (NULL);
 	pass_spaces(f);
 	if ((pair = (t_json_pair *)malloc(sizeof(t_json_pair))) == NULL)
 		return (pair);
