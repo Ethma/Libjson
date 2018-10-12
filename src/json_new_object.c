@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/11 14:05:49 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/12 12:20:15 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,10 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 		return (ft_free(pair));
 	f->pos++;
 	pass_spaces(f);
-	if ((pair->value = new_json_value(f, parent)) == NULL
-	&& ft_free(pair->key->str) == NULL)
+	if ((pair->value = new_json_value(f, parent)) == NULL)
 	{
-		ft_free(pair->key);
-		return (ft_free(pair));
+		json_free_pair(pair);
+		return (NULL);
 	}
 	return (pair);
 }
@@ -72,7 +71,9 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 	t_json_object	*obj;
 	t_json_value	*ret;
 	unsigned long	index;
+	int				i;
 
+	i = 0;
 	if (f->pos >= f->len || f->str == NULL || f->str[f->pos] != '{'
 	|| (ret = ft_fill_json_value(parent, object, NULL)) == NULL)
 		return (NULL);
@@ -90,7 +91,8 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 		{
 			json_free_pair(*obj->pair);
 			json_free(ret);
-			return(ft_free(obj));
+			json_free_object(obj);
+			return(NULL);
 		} 
 		pass_spaces(f);
 		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;

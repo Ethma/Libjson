@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/11 14:07:46 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/12 13:11:40 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,16 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 		if ((arr->value[index++] = new_json_value(f, ret)) == NULL)
 		{
 			json_free(ret);
-			json_free(*arr->value);
-			return(ft_free(arr));
+			json_free_array(arr);
+			return(NULL);
 		}
+		if (f->str[f->pos] == ':' && f->pos < f->len)
+		{
+			json_free(ret);
+			json_free_array(arr);
+			return (NULL);
+		}
+		
 		pass_spaces(f);
 		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 	}
