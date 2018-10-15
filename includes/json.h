@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:45:27 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/08 10:46:48 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/15 16:18:40 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,10 @@
 # define LIBJSON_H
 # include <stdlib.h>
 # include <fcntl.h>
-# include <stdio.h>
+# include <stdbool.h>
 #include <sys/types.h> 
 #include <sys/stat.h> 
 
-# define TRUE 1
-# define FALSE 0
-
-typedef unsigned char		t_bool;
 typedef struct s_json_value	t_json_value;
 
 typedef enum				e_json_value_type

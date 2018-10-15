@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:36:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/17 13:27:07 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/15 16:19:06 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,18 @@
 t_json_value	*new_boolean(t_json_file *file, t_json_value *parent)
 {
 	void *new_bool;
-	t_bool	aswr;
+	bool	aswr;
 
 	new_bool = NULL;
 	if (check_bool(file) == 1 && (file->pos += 4))
 	{
-		aswr = TRUE;
+		aswr = true;
 		new_bool = (void *)&aswr;
 		return (ft_fill_json_value(parent, boolean, new_bool));
 	}
 	else if (check_bool(file) == 2 && (file->pos += 5))
 	{
-		aswr = FALSE;
+		aswr = false;
 		new_bool = (void *)&aswr;
 		return (ft_fill_json_value(parent, boolean, new_bool));
 	}

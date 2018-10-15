@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/08 13:47:54 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/15 15:43:21 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ int		main(int ac, char **av)
 		write(1, "NUL MDR\n", ft_strlen("NUL MDR\n"));
 		return (-1);
 	}
-		write(1, str, ft_strlen(str));
-		write(1, "\n", 1);
+		//write(1, str, ft_strlen(str));
+		//write(1, "\n", 1);
 //	object = (t_json_object *)value->ptr;
 	//object2 = (t_json_object *)object->pair[0]->value->ptr;
 //	pair = object->pair;

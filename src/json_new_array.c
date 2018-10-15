@@ -6,12 +6,21 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/12 13:11:40 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/15 16:40:01 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
 #include "../libc/includes/libc.h"
+
+void	json_set_val(t_json_value **val, unsigned long nb)
+{
+	unsigned long nbb;
+
+	nbb = 0;
+	while (nbb < nb)
+		val[nbb++] = NULL;
+}
 
 unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 {
@@ -53,6 +62,7 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 	if ((arr->value = (t_json_value **)malloc(sizeof(t_json_value *)
 	* arr->nb)) == NULL && ft_free(ret) == NULL)
 		return (NULL);
+	json_set_val(arr->value, arr->nb);
 	index = 0;
 	while (index < arr->nb)
 	{
