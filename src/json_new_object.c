@@ -6,13 +6,21 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/12 12:20:15 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/15 10:50:30 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
 #include "../libc/includes/libc.h"
 
+void	json_set_pair(t_json_pair **pair, unsigned long nb)
+{
+	unsigned long nbb;
+
+	nbb = 0;
+	while (nbb < nb)
+		pair[nbb++] = NULL;
+}
 unsigned long	get_size(t_json_file *file, unsigned long pos)
 {
 	unsigned long cou;
@@ -51,6 +59,7 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 	pass_spaces(f);
 	if ((pair = (t_json_pair *)malloc(sizeof(t_json_pair))) == NULL)
 		return (pair);
+	ft_bzero(pair, sizeof(t_json_pair));
 	if ((pair->key = make_new_string(f)) == NULL && ft_free(pair->key->str) == NULL)
 		return (ft_free(pair));
 	pass_spaces(f);
@@ -84,12 +93,12 @@ t_json_value	*new_object(t_json_file *f, t_json_value *parent)
 	if ((obj->pair = (t_json_pair **)malloc(sizeof(t_json_pair *)
 	* obj->nb)) == NULL && ft_free(ret) == NULL)
 		return (ft_free(obj));
+	json_set_pair(obj->pair, obj->nb);
 	index = 0;
 	while (index < obj->nb)
 	{
 		if ((obj->pair[index++] = new_pair(f, ret)) == NULL)
 		{
-			json_free_pair(*obj->pair);
 			json_free(ret);
 			json_free_object(obj);
 			return(NULL);

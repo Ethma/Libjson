@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/08 14:25:02 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/15 09:56:38 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,8 @@ char	*ft_readfile(int fd, char *str);
 char	*ft_strstr(const char *haystack, const char *needle);
 
 int		ft_isalpha(int c);
+
+void	ft_bzero(void *s, size_t n);
+
+void	*ft_memset(void *b, int c, size_t len);
 #endif
