@@ -6,11 +6,18 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/28 12:27:09 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/04 13:42:06 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 13:17:14 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libc.h"
+
+double	ft_atof_ispow(const char *str, double res, double neg)
+{
+	if (*str == '-')
+		return (res * neg * ft_powe((double)ft_atoi(++str)));
+	return (res * neg * ft_powe((double)ft_atoi(++str)));
+}
 
 double	ft_atof(const char *str)
 {
@@ -37,10 +44,6 @@ double	ft_atof(const char *str)
 		}
 	}
 	if (*str == 'E' || *str == 'e')
-	{
-		if (*str == '-')
-			return (res * neg * ft_powe((double)ft_atoi(++str)));
-		return (res * neg * ft_powe((double)ft_atoi(++str)));
-	}
+		return (ft_atof_ispow(str, res, neg));
 	return (res * neg);
 }

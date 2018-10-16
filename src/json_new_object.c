@@ -6,14 +6,14 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/19 14:31:34 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/16 11:45:29 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:20:35 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
 #include "../libc/includes/libc.h"
 
-void	json_set_pair(t_json_pair **pair, unsigned long nb)
+void			json_set_pair(t_json_pair **pair, unsigned long nb)
 {
 	unsigned long nbb;
 
@@ -21,6 +21,7 @@ void	json_set_pair(t_json_pair **pair, unsigned long nb)
 	while (nbb < nb)
 		pair[nbb++] = NULL;
 }
+
 unsigned long	get_size(t_json_file *file, unsigned long pos)
 {
 	unsigned long cou;
@@ -62,7 +63,8 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 	ft_bzero(pair, sizeof(t_json_pair));
 	if (f->str[f->pos] != '"')
 		return (ft_free(pair));
-	if ((pair->key = make_new_string(f)) == NULL && ft_free(pair->key->str) == NULL)
+	if ((pair->key = make_new_string(f)) == NULL
+	&& ft_free(pair->key->str) == NULL)
 		return (ft_free(pair));
 	pass_spaces(f);
 	if (f->str[f->pos] != ':' && ft_free(pair->key) == NULL)
@@ -77,22 +79,32 @@ t_json_pair		*new_pair(t_json_file *f, t_json_value *parent)
 	return (pair);
 }
 
+t_json_object	*ft_set_obj(t_json_file *f, t_json_object *obj)
+{
+	if ((obj = (t_json_object *)malloc(sizeof(t_json_object))) == NULL)
+		return (NULL);
+	if ((obj->nb = get_size(f, f->pos + 1)) == 0)
+		return (ft_free(obj));
+	if (obj->nb == (unsigned long)-1)
+		return (ft_free(obj));
+	if ((obj->pair = (t_json_pair **)malloc(sizeof(t_json_pair *)
+	* obj->nb)) == NULL)
+		return (ft_free(obj));
+	return (obj);
+}
+
 t_json_value	*new_object(t_json_file *f, t_json_value *parent,
 unsigned long index)
 {
 	t_json_object	*obj;
 	t_json_value	*ret;
 
+	obj = 0;
 	if (f->pos >= f->len || f->str == NULL || f->str[f->pos] != '{'
 	|| (ret = ft_fill_json_value(parent, object, NULL)) == NULL)
 		return (NULL);
-	if ((obj = (t_json_object *)malloc(sizeof(t_json_object))) == NULL)
+	if ((obj = ft_set_obj(f, obj)) == NULL)
 		return (ft_free(ret));
-	if ((obj->nb = get_size(f, f->pos + 1)) == 0 && ft_free(obj) == NULL)
-		return (ft_free(ret));
-	if ((obj->pair = (t_json_pair **)malloc(sizeof(t_json_pair *)
-	* obj->nb)) == NULL && ft_free(ret) == NULL)
-		return (ft_free(obj));
 	json_set_pair(obj->pair, obj->nb);
 	while (index < obj->nb)
 	{

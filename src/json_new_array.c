@@ -6,14 +6,14 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/16 11:53:59 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:20:30 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/json.h"
 #include "../libc/includes/libc.h"
 
-void	json_set_val(t_json_value **val, unsigned long nb)
+void			json_set_val(t_json_value **val, unsigned long nb)
 {
 	unsigned long nbb;
 
@@ -46,32 +46,42 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 	return (cou);
 }
 
-t_json_value	*new_array(t_json_file *f, t_json_value *parent, unsigned long index)
+t_json_array	*ft_set_arr(t_json_file *f, t_json_array *arr)
+{
+	if ((arr = (t_json_array *)malloc(sizeof(t_json_array))) == NULL)
+		return (NULL);
+	if ((arr->nb = get_array_size(f, f->pos + 1)) == 0)
+		return (ft_free(arr));
+	if ((arr->value = (t_json_value **)malloc(sizeof(t_json_value *)
+	* arr->nb)) == NULL)
+		return (ft_free(arr));
+	return (arr);
+}
+
+t_json_value	*new_array(t_json_file *f, t_json_value *parent,
+unsigned long index)
 {
 	t_json_array	*arr;
 	t_json_value	*ret;
 
+	arr = 0;
 	if (f->str == NULL || f->pos >= f->len
 	|| f->str[f->pos] != '['
 		|| (ret = ft_fill_json_value(parent, array, NULL)) == NULL)
 		return (NULL);
-	if ((arr = (t_json_array *)malloc(sizeof(t_json_array))) == NULL)
+	if ((arr = ft_set_arr(f, arr)) == NULL)
 		return (ft_free(ret));
-	arr->nb = get_array_size(f, f->pos + 1);
-	if ((arr->value = (t_json_value **)malloc(sizeof(t_json_value *)
-	* arr->nb)) == NULL && ft_free(ret) == NULL)
-		return (NULL);
 	json_set_val(arr->value, arr->nb);
 	while (index < arr->nb)
 	{
 		if ((arr->value[index++] = new_json_value(f, ret)) == NULL)
-			return(ft_exit_array(ret, arr));
+			return (ft_exit_array(ret, arr));
 		pass_spaces(f);
 		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 	}
 	pass_spaces(f);
 	if (f->str[f->pos] != ']')
-		return(ft_exit_array(ret, arr));
+		return (ft_exit_array(ret, arr));
 	f->pos += (f->str[f->pos] == ']' && f->pos < f->len) ? 1 : 0;
 	ret->ptr = (void *)arr;
 	return (ret);

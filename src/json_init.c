@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/07 13:58:11 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/15 16:01:38 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 13:24:18 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_json_value	*json_init(char *str)
 
 	if (str == NULL)
 		return (NULL);
-	file.str = (const char *) str;
+	file.str = (const char *)str;
 	file.len = ft_strlen(str);
 	file.pos = 0;
 	file.index = 0;

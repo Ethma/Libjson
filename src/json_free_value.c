@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/27 16:17:57 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/15 16:23:23 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 13:25:50 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	json_free_pair(t_json_pair *pair)
 	json_free(pair->value);
 	ft_free(pair);
 }
+
 void	json_free_object(t_json_object *obj)
 {
 	unsigned long nb;
@@ -35,6 +36,7 @@ void	json_free_object(t_json_object *obj)
 	obj->nb = 0;
 	ft_free(obj);
 }
+
 void	json_free_array(t_json_array *array)
 {
 	unsigned long nb;

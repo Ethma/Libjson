@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/28 11:36:22 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/15 16:19:06 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 13:24:44 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 t_json_value	*new_boolean(t_json_file *file, t_json_value *parent)
 {
-	void *new_bool;
+	void	*new_bool;
 	bool	aswr;
 
 	new_bool = NULL;
