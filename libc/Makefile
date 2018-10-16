@@ -39,6 +39,7 @@ FILES = ft_strlen.c \
 	ft_isalpha.c \
 	ft_memset.c \
 	ft_bzero.c \
+	ft_exit.c \
 	ft_strncmp.c
 SRC = $(addprefix $(SRC_PATH)/,$(FILES))
 OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))

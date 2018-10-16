@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/26 13:40:24 by mabessir          #+#    #+#             */
-/*   Updated: 2018/09/26 16:31:12 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/15 17:36:14 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	*json_get_values(t_json_value *value, int type)
 {
-	t_bool			*boo;
+	bool			*boo;
 	t_json_string	*string;
 
 	boo = 0;
@@ -26,7 +26,7 @@ void	*json_get_values(t_json_value *value, int type)
 			return ((void *)null);
 		if (type == 2)
 		{
-			boo = (t_bool *)value->ptr;
+			boo = (bool *)value->ptr;
 			ft_free(value->ptr);
 			ft_free(value);
 			return ((void *)boo);

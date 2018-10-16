@@ -14,7 +14,7 @@
 		"direction": [0, 0, 1],
 		"up": [0, 1, 0],
 		"right": [1, 0, 0],
-		"vp_size": ["mdr":lol,1000, 1000],
+		"vp_size": ["lol":1000,1000, 1000],
 		"dist": 600
 	},
 	"materials":

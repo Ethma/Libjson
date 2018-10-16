@@ -1,0 +1,35 @@
+{
+	"camera": {
+		"dist": 600,
+		"vp_size": [
+			{
+				"lol": null,
+				"mdr": true,
+				"mdr": false,
+				"mdr": 42,
+				"mdr": 42.168541516516,
+				"mdr": 42e4,
+				"mdr": "mdoiqwdd",
+				"arry": [
+					null,
+					true,
+					false,
+					42,
+					42.168541516516,
+					42e4,
+					"mdoiqwdd",
+					{
+						"mdr": true,
+						"mdr": false,
+						"mdr": 42,
+						"mdr": 42.168541516516,
+						"mdr": 42e4,
+						"mdr": "mdoiqwdd"
+					}
+				]
+			},
+			1000,
+			1000
+		]
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/30 15:50:36 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/15 16:40:01 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 11:53:59 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,10 @@ unsigned long	get_array_size(t_json_file *file, unsigned long pos)
 	return (cou);
 }
 
-t_json_value	*new_array(t_json_file *f, t_json_value *parent)
+t_json_value	*new_array(t_json_file *f, t_json_value *parent, unsigned long index)
 {
 	t_json_array	*arr;
 	t_json_value	*ret;
-	unsigned long	index;
 
 	if (f->str == NULL || f->pos >= f->len
 	|| f->str[f->pos] != '['
@@ -63,26 +62,16 @@ t_json_value	*new_array(t_json_file *f, t_json_value *parent)
 	* arr->nb)) == NULL && ft_free(ret) == NULL)
 		return (NULL);
 	json_set_val(arr->value, arr->nb);
-	index = 0;
 	while (index < arr->nb)
 	{
 		if ((arr->value[index++] = new_json_value(f, ret)) == NULL)
-		{
-			json_free(ret);
-			json_free_array(arr);
-			return(NULL);
-		}
-		if (f->str[f->pos] == ':' && f->pos < f->len)
-		{
-			json_free(ret);
-			json_free_array(arr);
-			return (NULL);
-		}
-		
+			return(ft_exit_array(ret, arr));
 		pass_spaces(f);
 		f->pos += (f->str[f->pos] == ',' && f->pos < f->len) ? 1 : 0;
 	}
 	pass_spaces(f);
+	if (f->str[f->pos] != ']')
+		return(ft_exit_array(ret, arr));
 	f->pos += (f->str[f->pos] == ']' && f->pos < f->len) ? 1 : 0;
 	ret->ptr = (void *)arr;
 	return (ret);

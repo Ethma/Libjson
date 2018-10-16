@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/10 15:41:56 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/15 09:56:38 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 11:06:33 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,8 @@ int		ft_isalpha(int c);
 void	ft_bzero(void *s, size_t n);
 
 void	*ft_memset(void *b, int c, size_t len);
+
+void	*ft_exit_object(t_json_value *val, t_json_object *obj);
+
+void	*ft_exit_array(t_json_value *val, t_json_array *arr);
 #endif
