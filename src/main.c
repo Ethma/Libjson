@@ -6,7 +6,7 @@
 /*   By: mabessir <mabessir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/23 14:01:43 by mabessir          #+#    #+#             */
-/*   Updated: 2018/10/15 15:43:21 by mabessir         ###   ########.fr       */
+/*   Updated: 2018/10/16 14:25:34 by mabessir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,25 @@ int		main(int ac, char **av)
 	if ((value = json_init(str)) == NULL) 
 	{
 		ft_free(str);
-		write(1, "NUL MDR\n", ft_strlen("NUL MDR\n"));
+		write(1, "WRONG FILE OR SOMETHING HAPPENED\n", ft_strlen("WRONG FILE OR SOMETHING HAPPENED\n"));
 		return (-1);
 	}
-		//write(1, str, ft_strlen(str));
-		//write(1, "\n", 1);
+		write(1,"File read :", ft_strlen("File read :"));
+		write(1, str, ft_strlen(str));
+		write(1, "\n", 1);
 //	object = (t_json_object *)value->ptr;
 	//object2 = (t_json_object *)object->pair[0]->value->ptr;
 //	pair = object->pair;
 //	array = (t_json_array *)value->ptr;
 //	array2 = (t_json_array *)array->value[3]->ptr;
 //	string = (t_json_string *)object->pair[0]->key;
-//	printf("%s\n", string->str);
 	ft_free(str);
 	json_free(value);
-//	ft_free(value);
-//	ft_free(array->value[0]->ptr);
-//	ft_free(array->value[0]);
-//	ft_free(array->value);
-//	ft_free(array2);
 //	string2 = (t_json_string *)array->value[2]->ptr;
 //	printf("string2 = %s\n", string2->str);
 //	b = (int *)array2->value[0]->ptr;
 //	a = (double *)array->value[1]->ptr;
-//	printf("number = %f\n", *a);
 //	nbool = (t_bool *)value->ptr;
-//	printf("%hhu\n", *nbool);
 //	value = (t_json_string *)value->ptr;
 //	printf("%d\n", *a);
 //	string = 0;
